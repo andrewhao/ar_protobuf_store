@@ -17,14 +17,14 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_runtime_dependency "activerecord", ">= 3.0", "< 5.2"
+  gem.add_runtime_dependency "activerecord", ">= 3.0", "< 7.2"
 
   # Install this by default to make development easier
   gem.add_development_dependency "ruby-protocol-buffers", "~> 1.5"
 
   gem.add_development_dependency "codeclimate-test-reporter"
   gem.add_development_dependency "pry", "~> 0.9"
-  gem.add_development_dependency "sqlite3", "~> 1.3"
+  gem.add_development_dependency "sqlite3", "~> 1.4"
   gem.add_development_dependency "appraisal", "~> 1.0.0"
   gem.add_development_dependency "rspec", "~> 3.5.0"
   gem.add_development_dependency "rubygems-tasks", "~> 0.2"
