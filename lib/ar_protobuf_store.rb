@@ -26,7 +26,13 @@ module ArProtobufStore
     def protobuf_store(store_attribute, pb_class, options=nil)
       options ||= {}
       parser = ArProtobufStore.find_parser!(pb_class, options)
-      serialize(store_attribute, parser)
+      # Rails 7.1 introduced the `coder:` keyword and removed the positional
+      # coder argument in 7.2. Branch so this works across the supported AR range.
+      if Gem::Version.new(ActiveRecord::VERSION::STRING) >= Gem::Version.new("7.1")
+        serialize(store_attribute, coder: parser)
+      else
+        serialize(store_attribute, parser)
+      end
       protobuf_store_accessor(store_attribute, parser.extract_fields(options[:accessors]))
     end
 
